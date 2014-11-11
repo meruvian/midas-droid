@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/theme">
+
+        <Preference
+            android:key="pref_theme"
+            android:title="@string/theme"
+            android:summary="@string/theme_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/preference_other">
+
+        <Preference
+            android:key="pref_rate"
+            android:title="@string/preference_rate"
+            android:summary="@string/preference_rate_summary"/>
+
+        <Preference
+            android:key="pref_legal"
+            android:title="@string/preference_license"
+            android:summary="@string/preference_license_version"/>
+
+        <Preference
+            android:title="@string/preference_version"
+            android:key="pref_version" />
+    </PreferenceCategory>
+</PreferenceScreen>

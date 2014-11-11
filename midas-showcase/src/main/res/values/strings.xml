@@ -1,0 +1,23 @@
+<resources>
+    <string name="facebook_app_id">311334675707998</string>
+
+    <string name="app_name">Midas Showcase</string>
+
+    <string name="social_login">Social Login</string>
+
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+
+    <string name="insert_title">Insert Title</string>
+    <string name="insert_content">Insert Content</string>
+
+    <string name="submit">Submit</string>
+    <string name="refresh">Refresh</string>
+    <string name="cancle">Process Cancled</string>
+    <string name="waiting">Please wait a moment</string>
+
+    <string name="warning_login_mervid">Login with Merv.ID first</string>
+
+    <string name="failed_recieve_news">Failed receive news</string>
+    <string name="failed_post_news">Failed to post news</string>
+</resources>

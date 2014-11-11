@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DarkTheme.Purple">
+        <item name="android:actionBarStyle">@style/DarkTheme.Purple.ActionBar</item>
+    </style>
+
+    <style name="DarkTheme.Purple.ActionBar" parent="ActionBarDefaultTheme">
+        <item name="android:background">@color/purple_dark_android</item>
+    </style>
+</resources>

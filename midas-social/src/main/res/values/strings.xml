@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">midas-social</string>
+
+    <string name="loading">Tunggu sebentar ...</string>
+    <string name="refresh">Refresh</string>
+
+    <string name="facebook_app_id">214449985280831</string>
+
+    <string name="login_merv_id">Login with Merv.ID</string>
+    <string name="login_facebook">Login with Facebook</string>
+    <string name="login_twitter">Login with Twitter</string>
+    <string name="login_google">Login with Google+</string>
+
+    <string name="logout_merv_id">Logout from Merv.ID</string>
+    <string name="logout_facebook">Logout from Facebook</string>
+    <string name="logout_twitter">Logout from Twitter</string>
+    <string name="logout_google">Logout form Google+</string>
+
+    <string name="signing_in_merv_id">Signing in Merv.ID</string>
+    <string name="signing_in_facebook">Signing in Facebook</string>
+    <string name="signing_in_twitter">Signing in Twitter</string>
+    <string name="signing_in_google">Singning in Google+</string>
+
+    <string name="failed_recieve">Failed receive Data</string>
+</resources>

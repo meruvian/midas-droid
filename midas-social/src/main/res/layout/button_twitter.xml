@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_layout_twitter">
+
+    <RelativeLayout
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:layout_weight=".15">
+
+        <ImageView
+            android:id="@+id/facebook_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/twitter_logo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ref_button"
+            android:layout_alignBottom="@+id/ref_button"
+            android:layout_centerHorizontal="true"
+            android:padding="7dp"
+            android:focusable="false"/>
+
+        <Button
+            android:id="@+id/ref_button"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:focusable="false"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="fill_parent"
+        android:background="@color/twitter_click"/>
+
+    <Button
+        android:id="@+id/button_twitter_login"
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:layout_weight=".85"
+        style="@style/twitter_button"
+        android:text="Login with Twitter"
+        android:background="@drawable/bg_twitter"
+        android:paddingLeft="20dp"
+        android:gravity="left|center_vertical"/>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DarkTheme.Blue">
+        <item name="android:actionBarStyle">@style/DarkTheme.Blue.ActionBar</item>
+    </style>
+
+    <style name="DarkTheme.Blue.ActionBar" parent="ActionBarDefaultTheme">
+        <item name="android:background">@color/blue_dark_android</item>
+    </style>
+</resources>

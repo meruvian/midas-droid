@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/midas-core/midas-core.iml" filepath="$PROJECT_DIR$/midas-core/midas-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/midas-droid.iml" filepath="$PROJECT_DIR$/midas-droid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/midas-showcase/midas-showcase.iml" filepath="$PROJECT_DIR$/midas-showcase/midas-showcase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/midas-social/midas-social.iml" filepath="$PROJECT_DIR$/midas-social/midas-social.iml" />
+    </modules>
+  </component>
+</project>
+

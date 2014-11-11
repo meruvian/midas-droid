@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ActionBarDefaultTheme" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <!--<item name="android:height">50dp</item>-->
+    </style>
+
+    <style name="DarkTheme" parent="android:Theme.DeviceDefault.Light.DarkActionBar">
+
+    </style>
+
+    <style name="LightTheme" parent="android:Theme.DeviceDefault.Light">
+
+    </style>
+
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DarkTheme.Midas">
+        <item name="android:actionBarStyle">@style/DarkTheme.Midas.ActionBar</item>
+    </style>
+
+    <style name="DarkTheme.Midas.ActionBar" parent="ActionBarDefaultTheme">
+        <item name="android:background">@color/midas</item>
+    </style>
+</resources>

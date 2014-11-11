@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DarkTheme.Orange">
+        <item name="android:actionBarStyle">@style/DarkTheme.Orange.ActionBar</item>
+    </style>
+
+    <style name="DarkTheme.Orange.ActionBar" parent="ActionBarDefaultTheme">
+        <item name="android:background">@color/orange_dark_android</item>
+    </style>
+</resources>

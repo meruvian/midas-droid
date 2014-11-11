@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/dp10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight=".50"
+            android:src="@drawable/midas_merv"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:id="@+id/linear_social"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight=".50"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_users"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp16"/>
+
+            <include layout="@layout/button_facebook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!--<include layout="@layout/button_twitter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"/>-->
+
+            <include layout="@layout/button_gplus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"/>
+
+            <include layout="@layout/button_mervid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+</RelativeLayout>
