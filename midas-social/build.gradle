@@ -22,7 +22,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':midas-core')
-    compile project(':facebook')
     compile 'com.google.android.gms:play-services:5.0.77'
     compile 'org.twitter4j:twitter4j-core:[4.0,)'
 

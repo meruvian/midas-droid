@@ -65,6 +65,8 @@ public abstract class DefaultAdapter<L, H> extends BaseAdapter implements Adapte
 
     @Override
     public void add(L object) {
+
+
         contents.add(object);
         notifyDataSetChanged();
     }
@@ -72,6 +74,12 @@ public abstract class DefaultAdapter<L, H> extends BaseAdapter implements Adapte
     @Override
     public void addAll(List<L> objects) {
         contents.addAll(objects);
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void clear() {
+        contents.clear();
         notifyDataSetChanged();
     }
 

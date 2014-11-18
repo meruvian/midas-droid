@@ -1,4 +1,4 @@
-package org.meruvian.midas.social.mervid;
+package org.meruvian.midas.social.task.google;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -16,17 +16,17 @@ import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.meruvian.midas.core.service.TaskService;
-import org.meruvian.midas.social.SocialVariable;
 import org.meruvian.midas.social.R;
+import org.meruvian.midas.social.SocialVariable;
 
 /**
  * Created by ludviantoovandi on 03/10/14.
  */
-public class RequestMeMervID extends AsyncTask<String, Void, OAuthResourceResponse> {
+public class RequestMeGoogle extends AsyncTask<String, Void, OAuthResourceResponse> {
     private TaskService service;
     private Context context;
 
-    public RequestMeMervID(TaskService service, Context context) {
+    public RequestMeGoogle(TaskService service, Context context) {
         this.context = context;
         this.service = service;
     }
@@ -39,7 +39,9 @@ public class RequestMeMervID extends AsyncTask<String, Void, OAuthResourceRespon
     @Override
     protected OAuthResourceResponse doInBackground(String... params) {
         try {
-            OAuthClientRequest bearerClientRequest = new OAuthBearerClientRequest("http://id.mervpolis.com/api/v1/admin/users/me").setAccessToken(params[0]).buildHeaderMessage();
+            OAuthClientRequest bearerClientRequest = new OAuthBearerClientRequest(SocialVariable.MERVID_REQUEST_ME)
+                    .setAccessToken(params[0])
+                    .buildHeaderMessage();
 
             OAuthClient oAuthClient = new OAuthClient(new URLConnectionClient());
             OAuthResourceResponse response = oAuthClient.resource(bearerClientRequest, OAuth.HttpMethod.GET, OAuthResourceResponse.class);

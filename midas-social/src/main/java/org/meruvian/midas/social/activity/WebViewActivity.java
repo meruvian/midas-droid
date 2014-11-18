@@ -10,11 +10,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import org.meruvian.midas.core.defaults.DefaultActivity;
 import org.meruvian.midas.social.R;
+
+import java.net.CookieManager;
 
 /**
  * Created by ludviantoovandi on 04/11/14.
@@ -44,7 +47,11 @@ public class WebViewActivity extends DefaultActivity {
         webView = (WebView) findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setAppCacheEnabled(false);
-        webView.clearCache(false);
+        webView.getSettings().setSaveFormData(false);
+        webView.getSettings().setDatabaseEnabled(false);
+        webView.clearSslPreferences();
+        webView.clearMatches();
+        webView.clearCache(true);
         webView.clearFormData();
         webView.clearHistory();
         webView.loadUrl(getIntent().getStringExtra("url"));

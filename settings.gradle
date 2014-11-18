@@ -1,1 +1,1 @@
-include ':midas-core', ':midas-showcase', ':facebook', ':midas-social'
+include ':midas-core', ':midas-showcase', ':midas-social'

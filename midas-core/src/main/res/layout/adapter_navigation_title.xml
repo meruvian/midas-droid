@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="2.0dip"
         android:layout_marginLeft="@dimen/dp15"
+        android:textSize="@dimen/sp14"
         android:clickable="false" />
 
     <View

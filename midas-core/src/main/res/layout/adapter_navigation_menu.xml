@@ -12,6 +12,7 @@
         android:minHeight="?android:attr/listPreferredItemHeightSmall"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
+        android:textSize="@dimen/sp16"
         android:textAppearance="?android:attr/textAppearanceListItemSmall" />
 
 </LinearLayout>

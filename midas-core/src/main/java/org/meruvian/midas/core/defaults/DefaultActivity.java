@@ -21,6 +21,6 @@ public class DefaultActivity extends Activity {
     private int getThemes() {
         SharedPreferences sessionPreference = PreferenceManager.getDefaultSharedPreferences(this);
 
-        return sessionPreference.getInt("themes", sessionPreference.getInt("themes", R.style.DarkTheme_Purple));
+        return sessionPreference.getInt("themes", sessionPreference.getInt("themes", R.style.DarkTheme_Midas));
     }
 }

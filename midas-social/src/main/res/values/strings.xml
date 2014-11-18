@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">midas-social</string>
-
-    <string name="loading">Tunggu sebentar ...</string>
+        <string name="loading">Please wait ...</string>
     <string name="refresh">Refresh</string>
 
     <string name="facebook_app_id">214449985280831</string>

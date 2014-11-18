@@ -3,23 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@drawable/bg_layout_twitter">
+    android:background="@drawable/bg_layout_facebook">
 
     <RelativeLayout
         android:layout_width="0px"
         android:layout_height="wrap_content"
-        android:layout_weight=".15">
+        android:layout_weight=".10">
 
         <ImageView
             android:id="@+id/facebook_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/twitter_logo"
+            android:src="@drawable/facebook_logo"
             android:layout_alignParentLeft="true"
             android:layout_alignTop="@+id/ref_button"
             android:layout_alignBottom="@+id/ref_button"
             android:layout_centerHorizontal="true"
-            android:padding="7dp"
             android:focusable="false"/>
 
         <Button
@@ -32,16 +31,16 @@
     <View
         android:layout_width="2px"
         android:layout_height="fill_parent"
-        android:background="@color/twitter_click"/>
+        android:background="@color/facebook_click"/>
 
     <Button
-        android:id="@+id/button_twitter_login"
+        android:id="@+id/button_facebook_login"
         android:layout_width="0px"
         android:layout_height="wrap_content"
-        android:layout_weight=".85"
-        style="@style/twitter_button"
-        android:text="Login with Twitter"
-        android:background="@drawable/bg_twitter"
+        android:layout_weight=".90"
+        style="@style/facebook_button"
+        android:text="Login with Facebook"
+        android:background="@drawable/bg_facebook"
         android:paddingLeft="20dp"
         android:gravity="left|center_vertical"/>
 </LinearLayout>

@@ -13,4 +13,5 @@ public interface AdapterService<L, H> {
 
     public void addAll(List<L> objects);
 
+    public void clear();
 }

@@ -11,21 +11,21 @@
 
     <RelativeLayout
         android:id="@+id/left_drawer"
-        android:layout_width="240dp"
+        android:layout_width="@dimen/nav_size"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:orientation="vertical">
 
         <ListView
             android:id="@+id/main_menu"
-            android:layout_width="240dp"
+            android:layout_width="@dimen/nav_size"
             android:layout_height="match_parent"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp"
             android:background="@android:color/white"/>
 
         <LinearLayout
-            android:layout_width="240dp"
+            android:layout_width="@dimen/nav_size"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_alignBottom="@id/main_menu"
@@ -46,7 +46,7 @@
                     android:layout_gravity="center_vertical"/>
 
                 <TextView
-                    android:layout_width="240dp"
+                    android:layout_width="@dimen/nav_size"
                     android:layout_height="@dimen/dp50"
                     android:gravity="center_vertical"
                     android:minHeight="?android:attr/listPreferredItemHeightSmall"
