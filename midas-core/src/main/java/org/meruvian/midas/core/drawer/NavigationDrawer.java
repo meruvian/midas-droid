@@ -21,9 +21,10 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -42,6 +43,7 @@ public abstract class NavigationDrawer extends DefaultActivity {
     private ActionBarDrawerToggle drawerToggle;
     private NavigationDrawerAdapter navigationAdapter;
     private LinearLayout preference;
+    private Toolbar toolbar;
 
     private CharSequence drawerTitle, title;
 
@@ -54,14 +56,17 @@ public abstract class NavigationDrawer extends DefaultActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActionBar().setIcon(iconHome());
+//        getSupportActionBar().setIcon(iconHome());
         setContentView(R.layout.activity_main);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         title = drawerTitle = getTitle();
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer = (RelativeLayout) findViewById(R.id.left_drawer);
         mainMenu = (ListView) findViewById(R.id.main_menu);
         preference = (LinearLayout) findViewById(R.id.preference);
+
         navigationAdapter = new NavigationDrawerAdapter(this);
         navigationAdapter(navigationAdapter);
 
@@ -69,23 +74,34 @@ public abstract class NavigationDrawer extends DefaultActivity {
         mainMenu.setAdapter(navigationAdapter);
         mainMenu.setOnItemClickListener(new DrawerItemClickListener());
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
+//        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
+//            @Override
+//            public void onDrawerClosed(View drawerView) {
+//                getSupportActionBar().setTitle(title);
+//            }
+//
+//            @Override
+//            public void onDrawerOpened(View drawerView) {
+//                getSupportActionBar().setTitle(drawerTitle);
+//            }
+//        };
         drawerToggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
-                R.drawable.ic_drawer_white,
+                toolbar,
                 R.string.drawer_open,
                 R.string.drawer_close
                 ) {
             public void onDrawerClosed(View view) {
-                getActionBar().setTitle(title);
+                getSupportActionBar().setTitle(title);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             public void onDrawerOpened(View drawerView) {
-                getActionBar().setTitle(drawerTitle);
+                getSupportActionBar().setTitle(drawerTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
@@ -117,7 +133,7 @@ public abstract class NavigationDrawer extends DefaultActivity {
     @Override
     public void setTitle(CharSequence title) {
         this.title = title;
-        getActionBar().setTitle(title);
+        getSupportActionBar().setTitle(title);
     }
 
     @Override

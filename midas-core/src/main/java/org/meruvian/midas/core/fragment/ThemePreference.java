@@ -93,7 +93,7 @@ public class ThemePreference extends PreferenceFragment implements Preference.On
             purple.setChecked(true);
             midas.setChecked(false);
         } else {
-            editor.putInt("themes", R.style.DarkTheme_Midas);
+//            editor.putInt("themes", R.style.DarkTheme_Midas);
 
             blue.setChecked(false);
             red.setChecked(false);
@@ -112,43 +112,43 @@ public class ThemePreference extends PreferenceFragment implements Preference.On
     }
 
     private void initialize() {
-        if (sessionPreference.getInt("themes", R.style.DarkTheme_Midas) == R.style.DarkTheme_Blue) {
-            blue.setChecked(true);
-            red.setChecked(false);
-            orange.setChecked(false);
-            green.setChecked(false);
-            purple.setChecked(false);
-        } else if (sessionPreference.getInt("themes", R.style.DarkTheme_Midas) == R.style.DarkTheme_Red) {
-            blue.setChecked(false);
-            red.setChecked(true);
-            orange.setChecked(false);
-            green.setChecked(false);
-            purple.setChecked(false);
-        } else if (sessionPreference.getInt("themes", R.style.DarkTheme_Midas) == R.style.DarkTheme_Orange){
-            blue.setChecked(false);
-            red.setChecked(false);
-            orange.setChecked(true);
-            green.setChecked(false);
-            purple.setChecked(false);
-        } else if (sessionPreference.getInt("themes", R.style.DarkTheme_Midas) == R.style.DarkTheme_Green){
-            blue.setChecked(false);
-            red.setChecked(false);
-            orange.setChecked(false);
-            green.setChecked(true);
-            purple.setChecked(false);
-        } else if (sessionPreference.getInt("themes", R.style.DarkTheme_Midas) == R.style.DarkTheme_Purple){
-            blue.setChecked(false);
-            red.setChecked(false);
-            orange.setChecked(false);
-            green.setChecked(false);
-            purple.setChecked(true);
-        } else {
-            midas.setChecked(true);
-            blue.setChecked(false);
-            red.setChecked(false);
-            orange.setChecked(false);
-            green.setChecked(false);
-            purple.setChecked(false);
-        }
+//        if (sessionPreference.getInt("themes", R.style.DarkTheme_Midas) == R.style.DarkTheme_Blue) {
+//            blue.setChecked(true);
+//            red.setChecked(false);
+//            orange.setChecked(false);
+//            green.setChecked(false);
+//            purple.setChecked(false);
+//        } else if (sessionPreference.getInt("themes", R.style.DarkTheme_Midas) == R.style.DarkTheme_Red) {
+//            blue.setChecked(false);
+//            red.setChecked(true);
+//            orange.setChecked(false);
+//            green.setChecked(false);
+//            purple.setChecked(false);
+//        } else if (sessionPreference.getInt("themes", R.style.DarkTheme_Midas) == R.style.DarkTheme_Orange){
+//            blue.setChecked(false);
+//            red.setChecked(false);
+//            orange.setChecked(true);
+//            green.setChecked(false);
+//            purple.setChecked(false);
+//        } else if (sessionPreference.getInt("themes", R.style.DarkTheme_Midas) == R.style.DarkTheme_Green){
+//            blue.setChecked(false);
+//            red.setChecked(false);
+//            orange.setChecked(false);
+//            green.setChecked(true);
+//            purple.setChecked(false);
+//        } else if (sessionPreference.getInt("themes", R.style.DarkTheme_Midas) == R.style.DarkTheme_Purple){
+//            blue.setChecked(false);
+//            red.setChecked(false);
+//            orange.setChecked(false);
+//            green.setChecked(false);
+//            purple.setChecked(true);
+//        } else {
+//            midas.setChecked(true);
+//            blue.setChecked(false);
+//            red.setChecked(false);
+//            orange.setChecked(false);
+//            green.setChecked(false);
+//            purple.setChecked(false);
+//        }
     }
 }

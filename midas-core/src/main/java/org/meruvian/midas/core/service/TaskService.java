@@ -11,4 +11,5 @@ public interface TaskService<R> {
     void onCancel(int code, String message);
 
     void onError(int code, String message);
+
 }

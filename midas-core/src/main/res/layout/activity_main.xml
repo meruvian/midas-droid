@@ -1,64 +1,72 @@
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawer_layout"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/content_frame"
+    <include layout="@layout/toolbar"/>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/left_drawer"
-        android:layout_width="@dimen/nav_size"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:orientation="vertical">
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-        <ListView
-            android:id="@+id/main_menu"
+        <RelativeLayout
+            android:id="@+id/left_drawer"
             android:layout_width="@dimen/nav_size"
             android:layout_height="match_parent"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dp"
-            android:background="@android:color/white"/>
+            android:layout_gravity="start"
+            android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="@dimen/nav_size"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_alignBottom="@id/main_menu"
-            android:layout_alignParentBottom="true">
+            <ListView
+                android:id="@+id/main_menu"
+                android:layout_width="@dimen/nav_size"
+                android:layout_height="match_parent"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0dp"
+                android:background="@android:color/white"/>
 
             <LinearLayout
-                android:id="@+id/preference"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/nav_size"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:layout_alignBottom="@id/main_menu"
+                android:layout_alignParentBottom="true">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/preference"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_menu_preferences"
-                    android:focusable="false"
-                    android:paddingLeft="16dp"
-                    android:layout_gravity="center_vertical"/>
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="@dimen/nav_size"
-                    android:layout_height="@dimen/dp50"
-                    android:gravity="center_vertical"
-                    android:minHeight="?android:attr/listPreferredItemHeightSmall"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
-                    android:focusable="false"
-                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
-                    android:text="@string/preference"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@android:drawable/ic_menu_preferences"
+                        android:focusable="false"
+                        android:paddingLeft="16dp"
+                        android:layout_gravity="center_vertical"/>
 
+                    <TextView
+                        android:layout_width="@dimen/nav_size"
+                        android:layout_height="@dimen/dp50"
+                        android:gravity="center_vertical"
+                        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:focusable="false"
+                        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                        android:text="@string/preference"/>
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-</android.support.v4.widget.DrawerLayout>
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>
