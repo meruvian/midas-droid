@@ -18,12 +18,17 @@ import org.meruvian.midas.showcase.task.news.NewsDetailGet;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
+
+import butterknife.InjectViews;
 
 /**
  * Created by ludviantoovandi on 25/10/14.
  */
 public class DetailNewsFragment extends DefaultFragment implements TaskService<News> {
-    private TextView title, date, content;
+    @InjectViews({R.id.text_title, R.id.text_date, R.id.text_content})
+    List<TextView> textViews;
+
     private ProgressDialog dialog;
 
     private NewsDetailGet newsDetailGet;
@@ -31,22 +36,27 @@ public class DetailNewsFragment extends DefaultFragment implements TaskService<N
     private DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(true);
+    protected int layout() {
+        return R.layout.fragment_news_detail;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_news_detail, container, false);
+    //    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setRetainInstance(true);
+//    }
 
-        title = (TextView) view.findViewById(R.id.text_title);
-        date = (TextView) view.findViewById(R.id.text_date);
-        content = (TextView) view.findViewById(R.id.text_content);
-
-        return view;
-    }
+//    @Nullable
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.fragment_news_detail, container, false);
+//
+//        title = (TextView) view.findViewById(R.id.text_title);
+//        date = (TextView) view.findViewById(R.id.text_date);
+//        content = (TextView) view.findViewById(R.id.text_content);
+//
+//        return view;
+//    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -73,9 +83,9 @@ public class DetailNewsFragment extends DefaultFragment implements TaskService<N
             dialog.dismiss();
         }
 
-        title.setText(news.getTitle());
-        content.setText(news.getContent());
-        date.setText(dateFormat.format(news.getLogInformation().getCreateDate()));
+        textViews.get(0).setText(news.getTitle());
+        textViews.get(1).setText(dateFormat.format(news.getLogInformation().getCreateDate()));
+        textViews.get(2).setText(news.getContent());
     }
 
     @Override

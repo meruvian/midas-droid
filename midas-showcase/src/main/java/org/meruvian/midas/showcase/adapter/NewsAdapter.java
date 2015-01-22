@@ -32,12 +32,14 @@ public class NewsAdapter extends DefaultAdapter<News, NewsHolder> {
         holder.content = (TextView) convertView.findViewById(R.id.text_content);
         holder.date = (TextView) convertView.findViewById(R.id.text_date);
         holder.title = (TextView) convertView.findViewById(R.id.text_title);
+        holder.category = (TextView) convertView.findViewById(R.id.text_category);
     }
 
     @Override
     public void createdView(NewsHolder holder, News news) {
         holder.title.setText(news.getTitle());
         holder.date.setText(dateFormat.format(news.getLogInformation().getCreateDate()));
+        holder.category.setText(news.getCategory().getName());
 
         if (news.getContent().length() > 100) {
             holder.content.setText(news.getContent().substring(0, 100) + " ...");

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,16 +25,25 @@ import java.net.CookieManager;
  */
 public class WebViewActivity extends DefaultActivity {
     private WebView webView;
+    private Toolbar toolbar;
     private ProgressDialog dialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_webview);
+    public int layout() {
+        return R.layout.activity_webview;
+    }
 
-        getActionBar().setHomeButtonEnabled(true);
-        getActionBar().setDisplayShowHomeEnabled(true);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+    @Override
+    public void onViewCreated() {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_webview);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         dialog = new ProgressDialog(WebViewActivity.this);
         dialog.setMessage(getString(R.string.loading));

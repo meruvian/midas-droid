@@ -12,12 +12,30 @@
         android:text="@string/title"/>
 
     <EditText
-        android:id="@+id/edit_title"
+        android:id="@+id/field_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="@dimen/sp16"
-        android:hint="@string/insert_title"/>
+        android:hint="@string/required"
+        android:nextFocusDown="@+id/field_category"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp14"
+        android:text="@string/category"/>
+
+    <EditText
+        android:id="@+id/field_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp16"
+        android:focusable="false"
+        android:editable="false"
+        android:hint="@string/select_category"
+        android:nextFocusDown="@+id/field_content"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -27,11 +45,18 @@
         android:layout_marginTop="@dimen/dp10"/>
 
     <EditText
-        android:id="@+id/edit_content"
+        android:id="@+id/field_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minLines="1"
         android:maxLines="5"
         android:gravity="top"
-        android:hint="@string/insert_content"/>
+        android:hint="@string/required"/>
+
+    <!--<Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:layout_marginTop="@dimen/dp20"/>-->
 </LinearLayout>

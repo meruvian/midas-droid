@@ -1,9 +1,9 @@
 package org.meruvian.midas.showcase.activity;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
@@ -11,9 +11,10 @@ import org.meruvian.midas.core.drawer.Navigation;
 import org.meruvian.midas.core.drawer.NavigationDrawer;
 import org.meruvian.midas.core.drawer.NavigationDrawerAdapter;
 import org.meruvian.midas.showcase.R;
-import org.meruvian.midas.showcase.fragment.news.PostNewsFragment;
+import org.meruvian.midas.showcase.fragment.category.CategorySubmitFragment;
+import org.meruvian.midas.showcase.fragment.news.NewsSubmitFragment;
 import org.meruvian.midas.showcase.fragment.PreferencesFragment;
-import org.meruvian.midas.showcase.fragment.news.ViewNewsFragment;
+import org.meruvian.midas.showcase.fragment.news.NewsViewFragment;
 import org.meruvian.midas.showcase.gcm.RegisterGcmDevice;
 import org.meruvian.midas.showcase.activity.social.SocialLoginActivity;
 
@@ -63,13 +64,14 @@ public class MainActivity extends NavigationDrawer {
 
     @Override
     public Fragment mainFragment() {
-        return new ViewNewsFragment();
+        return new NewsViewFragment();
     }
 
     @Override
     public void navigationAdapter(NavigationDrawerAdapter adapter) {
         adapter.addNavigation(new Navigation("Dashboard", Navigation.NavigationType.MENU));
-        adapter.addNavigation(new Navigation("Submit News", Navigation.NavigationType.MENU));
+        adapter.addNavigation(new Navigation("Create News", Navigation.NavigationType.MENU));
+//        adapter.addNavigation(new Navigation("Create Category", Navigation.NavigationType.MENU));
         adapter.addNavigation(new Navigation("Social Login", Navigation.NavigationType.MENU));
     }
 
@@ -81,11 +83,17 @@ public class MainActivity extends NavigationDrawer {
                 getFragmentManager().popBackStack();
             }
         } else if (position == 1) {
-            if (preferences.contains("mervid")) {
-                replaceFragment(new PostNewsFragment(), "post news");
+            if (preferences.contains("mervid") || preferences.contains("manual")) {
+                replaceFragment(new NewsSubmitFragment(), "post news");
             } else {
                 Toast.makeText(this, getString(R.string.warning_login_mervid), Toast.LENGTH_SHORT).show();
             }
+//        } else if (position == 2) {
+//            if (preferences.contains("mervid") || preferences.contains("manual")) {
+//                replaceFragment(new CategorySubmitFragment(), "post news");
+//            } else {
+//                Toast.makeText(this, getString(R.string.warning_login_mervid), Toast.LENGTH_SHORT).show();
+//            }
         } else if (position == 2) {
             startActivity(new Intent(this, SocialLoginActivity.class));
         }
@@ -98,4 +106,5 @@ public class MainActivity extends NavigationDrawer {
         replaceFragment(new PreferencesFragment(), "preference");
         closeDrawer();
     }
+
 }

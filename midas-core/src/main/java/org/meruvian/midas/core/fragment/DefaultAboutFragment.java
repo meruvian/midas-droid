@@ -19,27 +19,27 @@ public abstract class DefaultAboutFragment extends DefaultFragment {
 	private WebView webView;
     private ImageView logo;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_about, container, false);
+    @Override
+    protected int layout() {
+        return R.layout.fragment_about;
+    }
 
-		version = (TextView) view.findViewById(R.id.version);
-		webView = (WebView) view.findViewById(R.id.webview);
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        version = (TextView) view.findViewById(R.id.version);
+        webView = (WebView) view.findViewById(R.id.webview);
         logo = (ImageView) view.findViewById(R.id.logo);
 
-		webView.loadUrl(about());
-		try {
-			PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
-			version.setText(pInfo.versionName);
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
+        webView.loadUrl(about());
+        try {
+            PackageInfo pInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
+            version.setText(pInfo.versionName);
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         logo(resourceLogo());
-
-		return view;
-	}
+    }
 
     public abstract int resourceLogo();
 

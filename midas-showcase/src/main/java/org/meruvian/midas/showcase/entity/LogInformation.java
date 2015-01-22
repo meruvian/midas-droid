@@ -8,10 +8,10 @@ import java.util.Date;
 public class LogInformation {
     private String id;
     private String createBy;
-    private Date createDate;
+    private Date createDate = new Date();
     private String updateBy;
-    private Date updateDate;
-    private int activeFlag;
+    private Date updateDate = new Date();
+    private int activeFlag = 0;
     private boolean active;
 
     public String getId() {

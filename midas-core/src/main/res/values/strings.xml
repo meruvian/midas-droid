@@ -20,4 +20,6 @@
     <string name="theme_orange">Orange</string>
     <string name="theme_green">Green</string>
     <string name="theme_purple">Purple</string>
+
+    <string name="please_wait">Please wait ...</string>
 </resources>

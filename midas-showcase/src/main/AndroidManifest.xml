@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.meruvian.midas.showcase"
-    android:versionCode="4"
-    android:versionName="1.2">
+    android:versionCode="6"
+    android:versionName="1.4">
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -21,7 +21,7 @@
     <application android:allowBackup="true"
         android:label="@string/app_name"
         android:icon="@drawable/ic_launcher"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.MidasTheme">
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -33,7 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.social.SocialLoginActivity" android:launchMode="singleTask">
+        <activity android:theme="@style/Theme.MidasTheme" android:name=".activity.social.SocialLoginActivity" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -41,7 +41,9 @@
                 <data android:scheme="midas" android:host="social_login" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.LoginActivity" android:configChanges="screenSize|orientation" android:windowSoftInputMode="adjustResize" android:theme="@style/Theme.MidasTheme"/>
+        <activity android:name=".activity.MainActivity" android:theme="@style/Theme.MidasTheme" />
+        <activity android:name=".fragment.news.NewsViewFragment" android:theme="@style/Theme.MidasTheme"/>
 
         <receiver
             android:name=".gcm.GcmBroadcastReceiver"

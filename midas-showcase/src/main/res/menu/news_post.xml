@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/action_post_news"
-        android:title="@string/submit"
-        android:icon="@android:drawable/ic_menu_send"
-        android:showAsAction="withText|ifRoom" />
-</menu>

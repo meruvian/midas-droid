@@ -4,8 +4,9 @@ package org.meruvian.midas.showcase.entity;
  * Created by ludviantoovandi on 24/07/14.
  */
 public class News extends DefaultEntity {
-    private String title;
-    private String content;
+    private String title = "";
+    private String content = "";
+    private Category category = new Category();
 
     public String getContent() {
         return content;
@@ -21,5 +22,13 @@ public class News extends DefaultEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

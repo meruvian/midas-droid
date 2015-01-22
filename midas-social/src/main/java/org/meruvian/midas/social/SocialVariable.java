@@ -15,17 +15,26 @@ public class SocialVariable {
     public static final String MERVID_REQUEST_ME = "http://api.merv.id/v1/users/me";
     public static final String MERVID_CALLBACK = "midas://social_login";
 
-    public static final int MERVID_REQUEST_ACCESS = 0;
-    public static final int MERVID_REQUEST_TOKEN_TASK = 1;
-    public static final int MERVID_REQUEST_ME_TASK = 2;
-    public static final int TWITTER_REQUEST_TOKEN_TASK = 3;
-    public static final int TWITTER_REQUEST_ACCESS_TASK  = 4;
-    public static final int TWITTER_REQUEST_ME_TASK = 5;
-    public static final int GOOGLE_REQUEST_ACCESS = 6;
-    public static final int GOOGLE_REQUEST_PLAY_TASK = 7;
-    public static final int GOOGLE_REQUEST_TOKEN_TASK = 8;
-    public static final int FACEBOOK_REQUEST_ME_TASK = 9;
-    public static final int FACEBOOK_REQUEST_TOKEN_TASK = 10;
-    public static final int FACEBOOK_REQUEST_ACCESS = 11;
+    public static final int MERVID_REQUEST_ACCESS = 11;
+    public static final int MERVID_REQUEST_TOKEN_TASK = 12;
+    public static final int MERVID_REQUEST_ME_TASK = 13;
+    public static final int MERVID_REFRESH_TOKEN_TASK = 14;
+
+    public static final int TWITTER_REQUEST_TOKEN_TASK = 21;
+    public static final int TWITTER_REQUEST_ACCESS_TASK  = 22;
+    public static final int TWITTER_REQUEST_ME_TASK = 23;
+    public static final int TWITTER_REFRESH_TOKEN_TASK = 24;
+
+    public static final int GOOGLE_REQUEST_ACCESS = 31;
+    public static final int GOOGLE_REQUEST_PLAY_TASK = 32;
+    public static final int GOOGLE_REQUEST_TOKEN_TASK = 33;
+    public static final int GOOGLE_REFRESH_TOKEN_TASK = 34;
+
+    public static final int FACEBOOK_REQUEST_ME_TASK = 41;
+    public static final int FACEBOOK_REQUEST_TOKEN_TASK = 42;
+    public static final int FACEBOOK_REQUEST_ACCESS = 43;
+    public static final int FACEBOOK_REFRESH_TOKEN_TASK = 44;
+
+
 
 }

@@ -7,9 +7,10 @@
 
     <string name="title">Title</string>
     <string name="content">Content</string>
-
-    <string name="insert_title">Insert Title</string>
-    <string name="insert_content">Insert Content</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="required">Required</string>
+    <string name="select_category">Select category</string>
 
     <string name="submit">Submit</string>
     <string name="refresh">Refresh</string>
@@ -19,5 +20,21 @@
     <string name="warning_login_mervid">Login with Merv.ID first</string>
 
     <string name="failed_recieve_news">Failed receive news</string>
-    <string name="failed_post_news">Failed to post news</string>
+    <string name="failed_post_news">Failed post news</string>
+    <string name="success_post_news">Succeed post news</string>
+
+    <string name="failed_recieve_categories">Failed receive categories</string>
+    <string name="failed_post_category">Failed post category</string>
+    <string name="success_post_category">Succeed post category</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="skip_login"><u>Skip Login</u></string>
+    <string name="loging_in">Loging in ...</string>
+    <string name="manual_login"><u>Manual Login</u></string>
+
+    <string name="search">Search</string>
+    <string name="advanced_search">Advanced Search</string>
+    <string name="category">Category</string>
 </resources>

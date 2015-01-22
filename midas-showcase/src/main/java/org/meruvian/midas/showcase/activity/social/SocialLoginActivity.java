@@ -18,48 +18,67 @@ import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.meruvian.midas.core.defaults.DefaultActivity;
 import org.meruvian.midas.showcase.R;
 import org.meruvian.midas.core.service.TaskService;
+import org.meruvian.midas.showcase.activity.LoginActivity;
+import org.meruvian.midas.showcase.activity.MainActivity;
+import org.meruvian.midas.showcase.fragment.news.NewsViewFragment;
 import org.meruvian.midas.social.SocialVariable;
 import org.meruvian.midas.social.activity.WebViewActivity;
+import org.meruvian.midas.social.task.facebook.RefreshTokenFacebook;
+import org.meruvian.midas.social.task.facebook.RequestAccessFacebook;
 import org.meruvian.midas.social.task.facebook.RequestTokenFacebook;
+import org.meruvian.midas.social.task.google.RefreshTokenGoogle;
+import org.meruvian.midas.social.task.google.RequestAccessGoogle;
 import org.meruvian.midas.social.task.google.RequestTokenGoogle;
+import org.meruvian.midas.social.task.mervid.RefreshTokenMervID;
+import org.meruvian.midas.social.task.mervid.RequestAccessMervID;
 import org.meruvian.midas.social.task.mervid.RequestTokenMervID;
+import org.w3c.dom.Text;
+
+import java.util.List;
+
+import butterknife.InjectView;
+import butterknife.InjectViews;
+import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 public class SocialLoginActivity extends DefaultActivity implements TaskService {
-    private Button facebookLogin, googleLogin, /*twitterLogin,*/ mervIDlogin;
+    @InjectViews({R.id.button_facebook_login, R.id.button_google_login, R.id.button_mervid_login})
+    List<Button> logins;
+    @InjectView(R.id.text_skip)
+    TextView skip;
+
     private ProgressDialog progressDialog;
-    private TextView usersText;
-    private WebView webOauth;
 
     private SharedPreferences preferences;
-    private StringBuilder users = new StringBuilder("");
-
     // Twitter
 //    private RequestToken requestToken;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_social_login);
-        getActionBar().setHomeButtonEnabled(true);
-        getActionBar().setDisplayShowHomeEnabled(true);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setTitle(R.string.social_login);
+    public int layout() {
+        return R.layout.activity_social_login;
+    }
+
+    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+    public void onViewCreated() {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_social_login);
+//        getActionBar().setHomeButtonEnabled(true);
+//        getActionBar().setDisplayShowHomeEnabled(true);
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
+//        getActionBar().setTitle(R.string.social_login);
+        setTitle(R.string.social_login);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        facebookLogin = (Button) findViewById(R.id.button_facebook_login);
+//        facebookLogin = (Button) findViewById(R.id.button_facebook_login);
 //        twitterLogin = (Button) findViewById(R.id.button_twitter_login);
-        googleLogin = (Button) findViewById(R.id.button_google_login);
-        mervIDlogin = (Button) findViewById(R.id.button_mervid_login);
-        usersText = (TextView) findViewById(R.id.text_users);
-        webOauth = (WebView) findViewById(R.id.webview);
+//        googleLogin = (Button) findViewById(R.id.button_google_login);
+//        mervIDlogin = (Button) findViewById(R.id.button_mervid_login);
+//        skip = (TextView) findViewById(R.id.text_skip);
 
-        facebookLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickFacebook();
-            }
-        });
+
 
 //        twitterLogin.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -68,38 +87,31 @@ public class SocialLoginActivity extends DefaultActivity implements TaskService 
 //            }
 //        });
 
-        googleLogin.setOnClickListener(new View.OnClickListener() {
+        skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickGoogle();
+                startActivity(new Intent(SocialLoginActivity.this, LoginActivity.class));
+                finish();
             }
         });
 
-        mervIDlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickMervID();
-            }
-        });
-
-        updateViewFacebook(getIntent());
+        updateViewFacebook();
 //        updateViewTwitter(getIntent());
-        updateViewMervID(getIntent());
-        updateViewGoogle(getIntent());
+        updateViewMervID();
+        updateViewGoogle();
     }
 
     @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
-        return super.onMenuItemSelected(featureId, item);
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
             if (requestCode == SocialVariable.MERVID_REQUEST_ACCESS) {
@@ -124,9 +136,45 @@ public class SocialLoginActivity extends DefaultActivity implements TaskService 
             progressDialog.setMessage(getString(R.string.signing_in_facebook));
         } else if (code == SocialVariable.GOOGLE_REQUEST_TOKEN_TASK) {
             progressDialog.setMessage(getString(R.string.signing_in_google));
+        } else if (code == SocialVariable.MERVID_REQUEST_ACCESS) {
+            progressDialog.setMessage(getString(R.string.access_merv_id));
+        } else if (code == SocialVariable.GOOGLE_REQUEST_ACCESS) {
+            progressDialog.setMessage(getString(R.string.access_google));
+        } else if (code == SocialVariable.FACEBOOK_REQUEST_ACCESS) {
+            progressDialog.setMessage(getString(R.string.access_facebook));
+        } else if (code == SocialVariable.MERVID_REFRESH_TOKEN_TASK) {
+            progressDialog.setMessage(getString(R.string.update_merv_id));
+        } else if (code == SocialVariable.FACEBOOK_REFRESH_TOKEN_TASK) {
+            progressDialog.setMessage(getString(R.string.update_facebook));
+        } else if (code == SocialVariable.GOOGLE_REFRESH_TOKEN_TASK) {
+            progressDialog.setMessage(getString(R.string.update_google));
         }
 
         progressDialog.show();
+    }
+
+    @OnClick({R.id.button_facebook_login, R.id.button_google_login, R.id.button_mervid_login})
+    public void setOnClickListener(Button button) {
+        if (button.getId() == R.id.button_facebook_login) {
+            onClickFacebook();
+        } else if (button.getId() == R.id.button_google_login) {
+            onClickGoogle();
+        } else if (button.getId() == R.id.button_mervid_login) {
+            onClickMervID();
+        }
+    }
+
+    @OnLongClick({R.id.button_facebook_login, R.id.button_google_login, R.id.button_mervid_login})
+    public boolean setOnLongClickListener(Button button) {
+        if (button.getId() == R.id.button_facebook_login) {
+            onLongClickFacebook();
+        } else if (button.getId() == R.id.button_google_login) {
+            onLongClickGoogle();
+        } else if (button.getId() == R.id.button_mervid_login) {
+            onLongClickMervID();
+        }
+
+        return true;
     }
 
     @Override
@@ -154,18 +202,42 @@ public class SocialLoginActivity extends DefaultActivity implements TaskService 
             if (code == SocialVariable.MERVID_REQUEST_TOKEN_TASK) {
                 String result = (String) object;
                 if (result != null && !"".equalsIgnoreCase(result)) {
-                    mervIDlogin.setText(getString(R.string.logout_merv_id));
+                    logins.get(2).setText(getString(R.string.logout_merv_id));
+                    startActivity(new Intent(this, MainActivity.class));
                 }
             } else if (code == SocialVariable.FACEBOOK_REQUEST_TOKEN_TASK) {
                 String result = (String) object;
                 if (result != null && !"".equalsIgnoreCase(result)) {
-                    facebookLogin.setText(getString(R.string.logout_facebook));
+                    logins.get(0).setText(getString(R.string.logout_facebook));
+                    startActivity(new Intent(this, MainActivity.class));
                 }
             } else if (code == SocialVariable.GOOGLE_REQUEST_TOKEN_TASK) {
                 String result = (String) object;
                 if (result != null && !"".equalsIgnoreCase(result)) {
-                    googleLogin.setText(getString(R.string.logout_google));
+                    logins.get(1).setText(getString(R.string.logout_google));
+                    startActivity(new Intent(this, MainActivity.class));
                 }
+            } else if (code == SocialVariable.MERVID_REQUEST_ACCESS) {
+                Intent intent = new Intent(this, WebViewActivity.class);
+                intent.putExtra("url", object.toString());
+                intent.setData(Uri.parse(object.toString()));
+                startActivityForResult(intent, SocialVariable.MERVID_REQUEST_ACCESS);
+            } else if (code == SocialVariable.FACEBOOK_REQUEST_ACCESS) {
+                Intent intent = new Intent(this, WebViewActivity.class);
+                intent.putExtra("url", object.toString());
+                intent.setData(Uri.parse(object.toString()));
+                startActivityForResult(intent, SocialVariable.FACEBOOK_REQUEST_ACCESS);
+            } else if (code == SocialVariable.GOOGLE_REQUEST_ACCESS) {
+                Intent intent = new Intent(this, WebViewActivity.class);
+                intent.putExtra("url", object.toString());
+                intent.setData(Uri.parse(object.toString()));
+                startActivityForResult(intent, SocialVariable.GOOGLE_REQUEST_ACCESS);
+            } else if (code == SocialVariable.MERVID_REFRESH_TOKEN_TASK) {
+                Toast.makeText(this, getString(R.string.finish_update_merv_id), Toast.LENGTH_LONG).show();
+            } else if (code == SocialVariable.FACEBOOK_REFRESH_TOKEN_TASK) {
+                Toast.makeText(this, getString(R.string.finish_update_facebook), Toast.LENGTH_LONG).show();
+            } else if (code == SocialVariable.GOOGLE_REFRESH_TOKEN_TASK) {
+                Toast.makeText(this, getString(R.string.finish_update_google), Toast.LENGTH_LONG).show();
             }
         } else {
             Toast.makeText(this, getString(R.string.failed_recieve), Toast.LENGTH_SHORT).show();
@@ -196,40 +268,18 @@ public class SocialLoginActivity extends DefaultActivity implements TaskService 
             editor.remove("facebook_jti");
             editor.commit();
 
-            facebookLogin.setText(getString(R.string.login_facebook));
+            logins.get(0).setText(getString(R.string.login_facebook));
         } else {
-            try {
-                OAuthClientRequest request = OAuthClientRequest.authorizationLocation(SocialVariable.MERVID_AUTH_URL)
-                        .setClientId(SocialVariable.MERVID_APP_ID)
-                        .setRedirectURI(SocialVariable.MERVID_CALLBACK)
-                        .setScope("read write")
-                        .setParameter("response_type", "code")
-                        .setParameter("social", "facebook")
-                        .buildQueryMessage();
-
-                Intent intent = new Intent(this, WebViewActivity.class);
-                intent.putExtra("url", request.getLocationUri());
-                intent.setData(Uri.parse(request.getLocationUri()));
-                startActivityForResult(intent, SocialVariable.FACEBOOK_REQUEST_ACCESS);
-            } catch (OAuthSystemException e) {
-                e.printStackTrace();
-            }
+            new RequestAccessFacebook(this, this).execute();
         }
+    }
 
-//        Session session = Session.getActiveSession();
-//        if (session.isOpened()) {
-//            session.closeAndClearTokenInformation();
-//            facebookLogin.setText(getString(R.string.login_facebook));
-//        } else {
-//            if (!session.isOpened() && !session.isClosed()) {
-//                session.openForRead(new Session.OpenRequest(this).setPermissions("public_profile").setCallback(statusCallback));
-//            } else {
-//                Session.openActiveSession(this, true, statusCallback);
-//
-//                Request request = Request.newMeRequest(session, new RequestMeFacebook(this, this));
-//                request.executeAsync();
-//            }
-//        }
+    private void onLongClickFacebook() {
+        if (preferences.getBoolean("facebook", false)) {
+            new RefreshTokenFacebook(this, this).execute();
+        } else {
+            Toast.makeText(this, getString(R.string.login_facebook), Toast.LENGTH_SHORT).show();
+        }
     }
 
 //    private void onClickTwitter() {
@@ -257,43 +307,18 @@ public class SocialLoginActivity extends DefaultActivity implements TaskService 
             editor.remove("google_jti");
             editor.commit();
 
-            googleLogin.setText(getString(R.string.login_google));
+            logins.get(1).setText(getString(R.string.login_google));
         } else {
-            try {
-                OAuthClientRequest request = OAuthClientRequest.authorizationLocation(SocialVariable.MERVID_AUTH_URL)
-                        .setClientId(SocialVariable.MERVID_APP_ID)
-                        .setRedirectURI(SocialVariable.MERVID_CALLBACK)
-                        .setScope("read write")
-                        .setParameter("response_type", "code")
-                        .setParameter("social", "google")
-                        .buildQueryMessage();
-
-                Intent intent = new Intent(this, WebViewActivity.class);
-                intent.putExtra("url", request.getLocationUri());
-                intent.setData(Uri.parse(request.getLocationUri()));
-                startActivityForResult(intent, SocialVariable.GOOGLE_REQUEST_ACCESS);
-            } catch (OAuthSystemException e) {
-                e.printStackTrace();
-            }
+            new RequestAccessGoogle(this, this).execute();
         }
+    }
 
-//        int code = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-//        if (code != ConnectionResult.SUCCESS) {
-//            GooglePlayServicesUtil.getErrorDialog(code, this, 0).show();
-//            return;
-//        }
-//
-//        if (plusClient.isConnected() && plusClient.getCurrentPerson() != null) {
-//            plusClient.clearDefaultAccount();
-//            plusClient.disconnect();
-//            plusClient.connect();
-//        } else {
-//            try {
-//                connectionResult.startResolutionForResult(this, SocialVariable.GOOGLE_REQUEST_ACCESS_TASK);
-//            } catch (IntentSender.SendIntentException e) {
-//                plusClient.connect();
-//            }
-//        }
+    private void onLongClickGoogle() {
+        if (preferences.getBoolean("google", false)) {
+            new RefreshTokenGoogle(this, this).execute();
+        } else {
+            Toast.makeText(this, getString(R.string.login_google), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void onClickMervID() {
@@ -307,60 +332,41 @@ public class SocialLoginActivity extends DefaultActivity implements TaskService 
             editor.remove("mervid_jti");
             editor.commit();
 
-            mervIDlogin.setText(getString(R.string.login_merv_id));
+            logins.get(2).setText(getString(R.string.login_merv_id));
         } else {
-            try {
-                OAuthClientRequest request = OAuthClientRequest.authorizationLocation(SocialVariable.MERVID_AUTH_URL)
-                        .setClientId(SocialVariable.MERVID_APP_ID)
-                        .setRedirectURI(SocialVariable.MERVID_CALLBACK)
-                        .setScope("read write")
-                        .setParameter("response_type", "code")
-                        .buildQueryMessage();
-
-                Intent intent = new Intent(this, WebViewActivity.class);
-                intent.putExtra("url", request.getLocationUri());
-                intent.setData(Uri.parse(request.getLocationUri()));
-                startActivityForResult(intent, SocialVariable.MERVID_REQUEST_ACCESS);
-            } catch (OAuthSystemException e) {
-                e.printStackTrace();
-            }
+            new RequestAccessMervID(this, this).execute();
         }
     }
 
-    private void updateViewGoogle(Intent intent) {
-//        if (plusClient != null && plusClient.isConnected() && plusClient.getCurrentPerson() != null) {
-//            googleLogin.setText(getString(R.string.logout_google));
-//        } else {
-//            googleLogin.setText(getString(R.string.login_google));
-//        }
-
-        if (preferences.getBoolean("google", false)) {
-            googleLogin.setText(getString(R.string.logout_google));
-        } else {
-            googleLogin.setText(getString(R.string.login_google));
-        }
-    }
-
-    private void updateViewMervID(Intent intent) {
+    private void onLongClickMervID() {
         if (preferences.getBoolean("mervid", false)) {
-            mervIDlogin.setText(getString(R.string.logout_merv_id));
+            new RefreshTokenMervID(this, this).execute(preferences.getString("mervid_token", ""));
         } else {
-            mervIDlogin.setText(getString(R.string.login_merv_id));
+            Toast.makeText(this, getString(R.string.login_merv_id), Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void updateViewFacebook(Intent intent) {
-//        Session session = Session.getActiveSession();
-//        if (session.isOpened()) {
-//            facebookLogin.setText(getString(R.string.logout_facebook));
-//        } else {
-//            facebookLogin.setText(getString(R.string.login_facebook));
-//        }
-
-        if (preferences.getBoolean("facebook", false)) {
-            facebookLogin.setText(getString(R.string.logout_facebook));
+    private void updateViewGoogle() {
+        if (preferences.getBoolean("google", false)) {
+            logins.get(1).setText(getString(R.string.refresh_google));
         } else {
-            facebookLogin.setText(getString(R.string.login_facebook));
+            logins.get(1).setText(getString(R.string.login_google));
+        }
+    }
+
+    private void updateViewMervID() {
+        if (preferences.getBoolean("mervid", false)) {
+            logins.get(2).setText(getString(R.string.refresh_merv_id));
+        } else {
+            logins.get(2).setText(getString(R.string.login_merv_id));
+        }
+    }
+
+    private void updateViewFacebook() {
+        if (preferences.getBoolean("facebook", false)) {
+            logins.get(0).setText(getString(R.string.refresh_facebook));
+        } else {
+            logins.get(0).setText(getString(R.string.login_facebook));
         }
     }
 

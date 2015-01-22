@@ -5,28 +5,14 @@
     android:orientation="horizontal"
     android:background="@drawable/bg_layout_gplus">
 
-    <RelativeLayout
-        android:layout_width="0px"
-        android:layout_height="wrap_content"
-        android:layout_weight=".15">
-
-        <ImageView
-            android:id="@+id/facebook_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/gplus_white_logo"
-            android:layout_alignParentLeft="true"
-            android:layout_alignTop="@+id/ref_button"
-            android:layout_alignBottom="@+id/ref_button"
-            android:layout_centerHorizontal="true"
-            android:focusable="false"/>
-
-        <Button
-            android:id="@+id/ref_button"
-            android:layout_width="0px"
-            android:layout_height="wrap_content"
-            android:focusable="false"/>
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/facebook_logo"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:src="@drawable/gplus_white_logo"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:focusable="false"/>
 
     <View
         android:layout_width="2px"
@@ -35,12 +21,12 @@
 
     <Button
         android:id="@+id/button_google_login"
-        android:layout_width="0px"
-        android:layout_height="wrap_content"
-        android:layout_weight=".85"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
         style="@style/gplus_button"
         android:text="Login with Google+"
         android:background="@drawable/bg_gplus"
-        android:paddingLeft="20dp"
-        android:gravity="left|center_vertical"/>
+        android:paddingLeft="@dimen/dp20"
+        android:gravity="left|center_vertical"
+        android:textSize="@dimen/sp16"/>
 </LinearLayout>

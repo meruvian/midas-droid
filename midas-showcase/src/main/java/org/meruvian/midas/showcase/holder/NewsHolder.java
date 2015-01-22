@@ -9,4 +9,5 @@ public class NewsHolder {
     public TextView title;
     public TextView date;
     public TextView content;
+    public TextView category;
 }

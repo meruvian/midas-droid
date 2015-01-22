@@ -52,12 +52,17 @@ public abstract class NavigationDrawer extends DefaultActivity {
     public abstract void selectedItem(int position);
     public abstract void onClickPreference();
     public abstract int iconHome();
-    
+
+    @Override
+    protected int layout() {
+        return R.layout.activity_main;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        getSupportActionBar().setIcon(iconHome());
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
