@@ -8,9 +8,14 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/expansion-lib" />
+            <option value="$PROJECT_DIR$/expansion-lisence-lib" />
+            <option value="$PROJECT_DIR$/expansion-sample" />
+            <option value="$PROJECT_DIR$/expansion-zipfile" />
             <option value="$PROJECT_DIR$/midas-core" />
             <option value="$PROJECT_DIR$/midas-showcase" />
             <option value="$PROJECT_DIR$/midas-social" />
+            <option value="$PROJECT_DIR$/testing" />
           </set>
         </option>
       </GradleProjectSettings>

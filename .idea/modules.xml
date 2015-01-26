@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/expansion-lib/expansion-lib.iml" filepath="$PROJECT_DIR$/expansion-lib/expansion-lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/expansion-lisence-lib/expansion-lisence-lib.iml" filepath="$PROJECT_DIR$/expansion-lisence-lib/expansion-lisence-lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/expansion-sample/expansion-sample.iml" filepath="$PROJECT_DIR$/expansion-sample/expansion-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/expansion-zipfile/expansion-zipfile.iml" filepath="$PROJECT_DIR$/expansion-zipfile/expansion-zipfile.iml" />
       <module fileurl="file://$PROJECT_DIR$/midas-core/midas-core.iml" filepath="$PROJECT_DIR$/midas-core/midas-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/midas-droid.iml" filepath="$PROJECT_DIR$/midas-droid.iml" />
       <module fileurl="file://$PROJECT_DIR$/midas-showcase/midas-showcase.iml" filepath="$PROJECT_DIR$/midas-showcase/midas-showcase.iml" />
       <module fileurl="file://$PROJECT_DIR$/midas-social/midas-social.iml" filepath="$PROJECT_DIR$/midas-social/midas-social.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testing/testing.iml" filepath="$PROJECT_DIR$/testing/testing.iml" />
     </modules>
   </component>
 </project>

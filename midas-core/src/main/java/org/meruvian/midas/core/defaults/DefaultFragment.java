@@ -30,6 +30,9 @@ public abstract class DefaultFragment extends Fragment {
 
     protected abstract int layout();
 
+    @Override
+    public abstract void onViewCreated(View view, Bundle savedInstanceState);
+
     public void replaceFragment(Fragment fragment, String tag) {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
