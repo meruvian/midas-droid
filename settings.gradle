@@ -1,7 +1,3 @@
-include ':midas-core', ':testing',
+include ':midas-core',
         ':midas-showcase',
-        ':midas-social',
-        ':expansion-lib',
-        ':expansion-lisence-lib',
-        ':expansion-sample',
-        ':expansion-zipfile'
+        ':midas-social'
