@@ -1,4 +1,4 @@
-package org.meruvian.midas.showcase.entity;
+package org.meruvian.midas.core.entity;
 
 import java.util.Date;
 
@@ -6,21 +6,12 @@ import java.util.Date;
  * Created by ludviantoovandi on 24/07/14.
  */
 public class LogInformation {
-    private String id;
     private String createBy;
     private Date createDate = new Date();
     private String updateBy;
     private Date updateDate = new Date();
     private int activeFlag = 0;
     private boolean active;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getCreateBy() {
         return createBy;

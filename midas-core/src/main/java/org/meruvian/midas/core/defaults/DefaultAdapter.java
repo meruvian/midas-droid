@@ -17,6 +17,7 @@ import java.util.List;
 public abstract class DefaultAdapter<L, H> extends BaseAdapter implements AdapterService<L, H> {
     private LayoutInflater inflater;
     private int layout;
+    private int position;
 
     private List<L> contents = new ArrayList<L>();
 
@@ -27,6 +28,14 @@ public abstract class DefaultAdapter<L, H> extends BaseAdapter implements Adapte
         this.layout = layout;
         this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    protected void setPosition(int position) {
+        this.position = position;
     }
 
     @Override
@@ -48,10 +57,10 @@ public abstract class DefaultAdapter<L, H> extends BaseAdapter implements Adapte
     public View getView(int position, View convertView, ViewGroup parent) {
         H holder;
         if (convertView == null) {
-            holder = ViewHolder();
             convertView = inflater.inflate(layout, parent, false);
+            holder = ViewHolder(convertView);
 
-            findView(holder, convertView);
+//            findView(holder, convertView);
 
             convertView.setTag(holder);
         } else {
@@ -60,13 +69,13 @@ public abstract class DefaultAdapter<L, H> extends BaseAdapter implements Adapte
 
         createdView(holder, getItem(position));
 
+        setPosition(position);
+
         return convertView;
     }
 
     @Override
     public void add(L object) {
-
-
         contents.add(object);
         notifyDataSetChanged();
     }
@@ -87,7 +96,7 @@ public abstract class DefaultAdapter<L, H> extends BaseAdapter implements Adapte
         return context;
     }
 
-    public abstract H ViewHolder();
+    public abstract H ViewHolder(View view);
 
     public abstract void findView(H holder, View convertView);
 

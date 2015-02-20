@@ -1,4 +1,4 @@
-package org.meruvian.midas.showcase.entity;
+package org.meruvian.midas.core.entity;
 
 /**
  * Created by ludviantoovandi on 24/07/14.

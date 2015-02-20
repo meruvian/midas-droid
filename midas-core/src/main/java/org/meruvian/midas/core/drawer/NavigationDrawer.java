@@ -51,7 +51,7 @@ public abstract class NavigationDrawer extends DefaultActivity {
     public abstract void navigationAdapter(NavigationDrawerAdapter adapter);
     public abstract void selectedItem(int position);
     public abstract void onClickPreference();
-    public abstract int iconHome();
+//    public abstract int iconHome();
 
     @Override
     protected int layout() {
