@@ -16,17 +16,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-v4:21+'
-    compile 'com.android.support:appcompat-v7:21.0.+'
+    compile 'com.android.support:appcompat-v7:21+'
 
-    compile 'com.jakewharton:butterknife:6.0.0'
+    compile 'com.jakewharton:butterknife:6+'
     compile 'de.greenrobot:eventbus:2.2.1'
     compile 'com.path:android-priority-jobqueue:1.1.2'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.4.3'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.3'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.4.3'
+//    compile 'com.fasterxml.jackson.core:jackson-core:2.4.3'
+//    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.3'
+//    compile 'com.fasterxml.jackson.core:jackson-annotations:2.4.3'
+    compile 'com.github.satyan:sugar:1.3'
 }

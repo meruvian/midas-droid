@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Navigation Size -->
+    <dimen name="nav_size">300dp</dimen>
+
+    <!-- Text Size -->
+    <dimen name="sp10">16sp</dimen>
+    <dimen name="sp12">18sp</dimen>
+    <dimen name="sp14">20sp</dimen>
+    <dimen name="sp16">22sp</dimen>
+    <dimen name="sp18">24sp</dimen>
+    <dimen name="sp20">26sp</dimen>
+    <dimen name="sp22">28sp</dimen>
+    <dimen name="sp24">30sp</dimen>
+    <dimen name="sp26">32sp</dimen>
+    <dimen name="sp28">34sp</dimen>
+
+    <!-- View Size -->
+    <dimen name="dp5">20dp</dimen>
+    <dimen name="dp10">25dp</dimen>
+    <dimen name="dp15">30dp</dimen>
+    <dimen name="dp20">35dp</dimen>
+    <dimen name="dp25">40dp</dimen>
+    <dimen name="dp50">65dp</dimen>
+    <dimen name="dp65">85dp</dimen>
+    <dimen name="activity_horizontal_margin">23dp</dimen>
+    <dimen name="activity_vertical_margin">23dp</dimen>
+
+</resources>

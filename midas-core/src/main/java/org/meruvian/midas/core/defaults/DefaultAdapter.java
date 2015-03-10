@@ -60,18 +60,16 @@ public abstract class DefaultAdapter<L, H> extends BaseAdapter implements Adapte
             convertView = inflater.inflate(layout, parent, false);
             holder = ViewHolder(convertView);
 
-//            findView(holder, convertView);
-
             convertView.setTag(holder);
         } else {
             holder = (H) convertView.getTag();
         }
 
-        createdView(holder, getItem(position));
+//        createdView(convertView, holder, getItem(position));
 
         setPosition(position);
 
-        return convertView;
+        return createdView(convertView, holder, getItem(position));
     }
 
     @Override
@@ -98,7 +96,5 @@ public abstract class DefaultAdapter<L, H> extends BaseAdapter implements Adapte
 
     public abstract H ViewHolder(View view);
 
-    public abstract void findView(H holder, View convertView);
-
-    public abstract void createdView(H holder, L object);
+    public abstract View createdView(View view, H holder, L object);
 }
